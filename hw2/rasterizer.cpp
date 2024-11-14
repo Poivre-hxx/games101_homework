@@ -41,7 +41,7 @@ auto to_vec4(const Eigen::Vector3f& v3, float w = 1.0f)
 }
 
 
-static bool insideTriangle(int x, int y, const Vector3f* _v)
+static bool insideTriangle(float x, float y, const Vector3f* _v)
 {   
     // 三条边按照clockwise
     Vector3f point = { static_cast<float>(x), static_cast<float>(y), 0.0f };  // 使用浮点数并设置Z为0

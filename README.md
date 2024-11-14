@@ -20,7 +20,9 @@ output：
 
 一开始没有判定着色的范围，导致了深度大一点的三角形少了一块（应该是先绘制了绿色的三角形，导致后面三角形没有着上色）。
 
-PS. 这里的黑边倒是还挺明显的。
+##### PS. 
+
+这里的黑边倒是还挺明显的。
 
 <img src="https://pic-poivre.oss-cn-hangzhou.aliyuncs.com/pics/image-20241110152824588.png" alt="image-20241110152824588" style="width:40%;" />
 
@@ -39,3 +41,14 @@ PS. 这里的黑边倒是还挺明显的。
 然后试了下分16个区域，好像还是没什么变化。。。。
 
 <img src="https://pic-poivre.oss-cn-hangzhou.aliyuncs.com/pics/image-20241110161205559.png" alt="image-20241110161205559" style="width:40%;" />
+
+##### PS.. 
+
+发现问题是处在判定点是否在三角形内的函数 `insideTriangle()` 上（曹操盖饭），原来的定义里传入的坐标形参是整形的！
+
+```c++
+// 问题出在这里！！
+static bool insideTriangle(int x, int y, const Vector3f* _v) { }
+```
+
+<img src="https://pic-poivre.oss-cn-hangzhou.aliyuncs.com/pics/image-20241114135243245.png" alt="image-20241114135243245" style="width:40%;" />
